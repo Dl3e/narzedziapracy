@@ -1,7 +1,8 @@
+import sys
+import pathlib
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    arg1 = sys.argv[1]
+    arg2 = sys.argv[2]
+    # print(pathlib.Path(arg1).suffix)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
