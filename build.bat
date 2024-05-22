@@ -1,2 +1,2 @@
-.venv\Scripts\pyinstaller.exe --onefile main.py
+pyinstaller.exe --onefile main.py
 pause
