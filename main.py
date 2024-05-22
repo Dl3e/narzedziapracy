@@ -2,6 +2,30 @@ import sys
 import pathlib
 import simplejson as json
 import yaml
+import xml.etree.ElementTree as ET
+
+def json2xml(json_obj, line_padding=""):
+    result_list = list()
+
+    json_obj_type = type(json_obj)
+
+    if json_obj_type is list:
+        for sub_elem in json_obj:
+            result_list.append(json2xml(sub_elem, line_padding))
+
+        return "\n".join(result_list)
+
+    if json_obj_type is dict:
+        for tag_name in json_obj:
+            sub_obj = json_obj[tag_name]
+            result_list.append("%s<%s>" % (line_padding, tag_name))
+            result_list.append(json2xml(sub_obj, "\t" + line_padding))
+            result_list.append("%s</%s>" % (line_padding, tag_name))
+
+        return "\n".join(result_list)
+
+    return "%s%s" % (line_padding, json_obj)
+
 class Serializer:
     def get_file_content(self):
         match pathlib.Path(arg1).suffix.split():
@@ -28,6 +52,12 @@ class Serializer:
                 json.dump(self.data, open(self.final_filepath, "a"))
             case ['.yml']:
                 yaml.dump(self.data, open(self.final_filepath, "a"))
+            case ['.xml']:
+                match pathlib.Path(arg1).suffix.split():
+                    case ['.json']:
+                        with open(self.final_filepath, "a") as filef:
+                            filef.write(json2xml(self.data))
+
     def __init__(self, initial_filepath, final_filepath):
         self.initial_filepath = initial_filepath
         self.final_filepath = final_filepath
