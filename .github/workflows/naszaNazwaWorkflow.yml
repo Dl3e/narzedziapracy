@@ -23,12 +23,12 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run custom installation script
-      run: ${{ github.workspace }}installResources.bat
-      shell: cmd
+      run: ${{ github.workspace }}\installResources.bat
+      shell: powershell
 
     - name: Build .exe
-      run: ${{ github.workspace }}build.bat
-      shell: cmd
+      run: ${{ github.workspace }}\build.bat
+      shell: powershell
 
     - name: Upload .exe artifact
       uses: actions/upload-artifact@v3
