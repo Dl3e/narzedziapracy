@@ -2,7 +2,7 @@ name: Build and Upload .exe
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Uruchamianie raz w tygodniu, w niedzielę o północy
+    - cron: '0 0 * * 0'
   push:
     branches:
       - master
@@ -22,15 +22,15 @@ jobs:
         python-version: '3.10'  
 
     - name: Run custom installation script
-      run:  installResources.bat
+      run: .\installResources.bat
       shell: cmd
 
     - name: Build .exe
-      run: build.bat
+      run: .\build.bat
       shell: cmd
 
     - name: Upload .exe artifact
       uses: actions/upload-artifact@v3
       with:
         name: built-executable
-        path: /build/main/PYZ-00.pyz
+        path: ./build/main/PYZ-00.pyz
