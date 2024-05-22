@@ -22,15 +22,15 @@ jobs:
         python-version: '3.10'  
 
     - name: Run custom installation script
-      run: .\installResources.bat
+      run: ${GITHUB_WORKSPACE}\installResources.bat
       shell: cmd
 
     - name: Build .exe
-      run: .\build.bat
+      run: ${GITHUB_WORKSPACE}\build.bat
       shell: cmd
 
     - name: Upload .exe artifact
       uses: actions/upload-artifact@v3
       with:
         name: built-executable
-        path: ./dist/main.exe
+        path: ${GITHUB_WORKSPACE}/dist/main.exe
