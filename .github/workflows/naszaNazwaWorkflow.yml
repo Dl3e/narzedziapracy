@@ -23,11 +23,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run custom installation script
-      run: ${{ github.workspace }}\installResources.bat
+      run: ${{ github.workspace }}installResources.bat
       shell: cmd
 
     - name: Build .exe
-      run: ${{ github.workspace }}\build.bat
+      run: ${{ github.workspace }}build.bat
       shell: cmd
 
     - name: Upload .exe artifact
