@@ -78,4 +78,7 @@ class Serializer:
 if __name__ == '__main__':
     arg1 = sys.argv[1]
     arg2 = sys.argv[2]
-    file = Serializer(arg1, arg2)
+    try:
+        file = Serializer(arg1, arg2)
+    except:
+        exit(-1)
