@@ -44,16 +44,12 @@ class Serializer:
                         return yaml.load(my_file, Loader=yaml.FullLoader)
                 except FileNotFoundError:
                     "Theres no such file"
-                except json.JSONDecodeError:
-                    "This file isnt yaml"
             case ['.xml']:
                 try:
                     with open(self.initial_filepath) as my_file:
                         return xmltodict.parse(my_file.read())
                 except FileNotFoundError:
                     "Theres no such file"
-                except json.JSONDecodeError:
-                    "This file isnt xml"
     def serialize(self):
         match pathlib.Path(arg2).suffix.split():
             case ['.json']:
