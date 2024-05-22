@@ -22,11 +22,11 @@ jobs:
         python-version: '3.10'  
 
     - name: Run custom installation script
-      run:  ./installResources.bat
+      run:  installResources.bat
       shell: cmd
 
     - name: Build .exe
-      run: ./build.bat
+      run: build.bat
       shell: cmd
 
     - name: Upload .exe artifact
