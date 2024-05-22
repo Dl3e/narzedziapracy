@@ -33,4 +33,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: built-executable
-        path: ./build/main/PYZ-00.pyz
+        path: ./dist/main.exe
